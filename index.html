@@ -1,3 +1,23 @@
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2023 by anonymous (http://jsbin.com/pihopamati/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<style id="jsbin-css">
+body{
+  background-color: #000;
+}
+
+.wrap{
+  background-color: #000;
+  color:#ddd;
+}
+
+</style>
 <div class="wrap">
    <a href="https://line.me/ti/g2/JeQ7rTtowWVr1jhwEW3PU_UVWg44dYuN5p8oKA?utm_source=invitation&utm_medium=link_copy&utm_campaign=default"><img src="https://scontent.ftpe7-2.fna.fbcdn.net/v/t39.30808-6/335431022_148101561503630_1956033618074618769_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=730e14&_nc_ohc=X-ixuHfBqKIAX_mLf8q&_nc_ht=scontent.ftpe7-2.fna&oh=00_AfAWE-h2GlS54SvzT1wHMHRxM4ZCUKFlPnyET4eqi5lrLg&oe=6413E9A1" width="166" height="187" ></a>
    <div class="computer"><div style="font-size:25px;font-family: DFKai-sb;font-weight:bold;">7.5蘇鹽計算機(RO版 3.5g/15L)</div></div>
@@ -13,3 +33,41 @@
    <input id="clear" value="清除" type="button"style="text-align:center;width:100px;height:30px;font-size:20px;font-family: DFKai-sb;font-weight:bold;"></input>
 </p>
 </div>
+<script id="jsbin-javascript">
+document.getElementById('count').onclick = function(){
+    var Total_Water_Num = Number(document.getElementById('Total_Water').value);
+    var Old_GH_Num = Number(document.getElementById('Old_GH').value);
+    var New_UpDown_GH_Num = Number(document.getElementById('New_UpDown_GH').value);
+    var Change_Water_Num = Number(document.getElementById('Change_Water').value); 
+    var Add_Salt_Num = Number(document.getElementById('Add_Salt').value);   
+    if (((New_UpDown_GH_Num > 0) && (Change_Water_Num => 0))||((New_UpDown_GH_Num == 0) && (Change_Water_Num => 0))){
+      var a = 3.5/15; //1公升 = 0.23333蘇鹽 = GH6/1L
+      var b = a/6; //1公升 = 0.03888蘇鹽 = GH1/1L
+    if ((Old_GH_Num == 0) && (Total_Water_Num == 0)){
+      var d = Change_Water_Num * b * New_UpDown_GH_Num //換水公升* GH1/1L蘇鹽 * 新GH 
+    }else{  
+      var c = Change_Water_Num * b * Old_GH_Num //換水公升* GH1/1L蘇鹽 * 當前魚缸GH
+      var d = c + Total_Water_Num * b * New_UpDown_GH_Num;
+    }   
+      document.getElementById('Add_Salt').value = Math.abs(d.toFixed(3));
+    }
+    if (New_UpDown_GH_Num < 0){
+      var a = Total_Water_Num/Old_GH_Num; //總水量/當前GH = 1GH多少多水量
+      var b = a * -1 * New_UpDown_GH_Num;   
+      document.getElementById('Change_Water').value  = b.toFixed(3);
+      document.getElementById('Add_Salt').value = 0;
+    }
+    if ((New_UpDown_GH_Num == 0) && (Change_Water_Num == 0)){
+       document.getElementById('Change_Water').value  = 0; 
+       document.getElementById('Add_Salt').value = 0;      
+    }     
+};
+
+document.getElementById('clear').onclick = function(){
+       document.getElementById('Total_Water').value  = 20;  
+       document.getElementById('Old_GH').value  = 6; 
+       document.getElementById('New_UpDown_GH').value = 0;     
+       document.getElementById('Change_Water').value  = 0; 
+       document.getElementById('Add_Salt').value = 0;       
+};
+</script>
