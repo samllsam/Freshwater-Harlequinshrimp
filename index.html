@@ -9,71 +9,222 @@ body{
   color:#ddd;
 }
 
+.computer{
+  font-size:25px;
+  font-family: DFKai-sb;
+  font-weight:bold;
+}
+
+.computer1{
+  font-size:20px;
+  font-family: DFKai-sb;
+  font-weight:bold;
+}
+
+.Raw_Water_select{
+  text-align:center;
+  width:100px;
+  height:30px;
+  font-size:20px;
+  font-family: DFKai-sb;
+  font-weight:bold;
+}
+
+.All_select{
+  text-align:center;
+  width:100px;
+  height:30px;
+  font-size:20px;
+  font-family: DFKai-sb;
+  font-weight:bold;
+}
+
+
+input[type="text"] {
+  text-align: center;
+  width:50px;
+  height:20px;
+  font-size:20px;
+  font-family: DFKai-sb;
+  font-weight:bold;
+}
+
+input[type="text1"] {
+  text-align:center;
+  width:80px;
+  height:20px;
+  font-size:20px;
+  font-family: DFKai-sb;
+  font-weight:bold;
+}
+
+input[type="button"] {
+  text-align:center;
+  width:100px;
+  height:30px;
+  font-size:20px;
+  font-family: DFKai-sb;
+  font-weight:bold;
+}
+
 </style>
 <div class="wrap">
-   <a href="https://line.me/ti/g2/JeQ7rTtowWVr1jhwEW3PU_UVWg44dYuN5p8oKA?utm_source=invitation&utm_medium=link_copy&utm_campaign=default"><img src="https://scontent.ftpe7-2.fna.fbcdn.net/v/t39.30808-6/335431022_148101561503630_1956033618074618769_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=730e14&_nc_ohc=X-ixuHfBqKIAX_mLf8q&_nc_ht=scontent.ftpe7-2.fna&oh=00_AfAWE-h2GlS54SvzT1wHMHRxM4ZCUKFlPnyET4eqi5lrLg&oe=6413E9A1" width="166" height="187" ></a>
-   <div class="computer"><div style="font-size:25px;font-family: DFKai-sb;font-weight:bold;">7.5蘇鹽計算機(RO版 3.5g/15L)</div></div>
-   <div style="font-size:20px;font-family: DFKai-sb;font-weight:bold;">
-   <font color="#FF0000">計算結果僅供參考(計算完請先清除在計算)</font>  
-   <p>魚缸總水量 <input id="Total_Water" value="20" type="text" style="text-align:center;width:50px;height:20px;font-size:20px;font-family: DFKai-sb;font-weight:bold;"></p>
-   <p>魚缸當前GH <input id="Old_GH" value="6" type="text" style="text-align:center;width:50px;height:20px;font-size:20px;font-family: DFKai-sb;font-weight:bold;"></p>
-   <p>預計提升或降低GH <input  id="New_UpDown_GH" value="0" type="text" style="text-align:center;width:50px;height:20px;font-size:20px;font-family: DFKai-sb;font-weight:bold;"></p>
-   <p>預計換水幾公升 <input  id="Change_Water" value="0" type="text" style="text-align:center;width:80px;height:20px;font-size:20px;font-family: DFKai-sb;font-weight:bold;"></p>
-   <p>預計加蘇鹽幾克 <input  id="Add_Salt" value="0" type="text" style="text-align:center;width:80px;height:20px;font-size:20px;font-family: DFKai-sb;font-weight:bold;"></p>  
-   </div>  
-   <p><input id="count" value="計算" type="button" style="text-align:center;width:100px;height:30px;font-size:20px;font-family: DFKai-sb;font-weight:bold;"></input>
-   <input id="clear" value="清除" type="button"style="text-align:center;width:100px;height:30px;font-size:20px;font-family: DFKai-sb;font-weight:bold;"></input>
-</p>
+   <a href="https://line.me/ti/g2/JeQ7rTtowWVr1jhwEW3PU_UVWg44dYuN5p8oKA?utm_source=invitation&utm_medium=link_copy&utm_campaign=default"><img src="https://i.postimg.cc/1RdMQ6q5/image.jpg" width="166" height="187" ></a>
+   <div class="computer">7.5蘇鹽與赫根計算機(Ver2.0)<p>蘇鹽3.5g/15L,赫根1.5ml/2L</div>
+
+   <div class="computer1">
+   <font color="#FF0000">計算結果僅供參考，請依缸況自行調整<p>(計算完請先清除在計算)</p></font> 
+
+   <p>水源 <select id="Raw_Water_Tool" name="Raw_Water_Tool" onchange="Raw_Water_select();"<div class="Raw_Water_select">>
+   <option value="0">RO</option>
+   <option value="1">自來水</option></select>
+     
+   <p>調水工具 <select id="All_Tool" name="All_Tool" onchange="All_select();"<div class="All_select">>
+   <option value="0">7.5蘇鹽</option>
+   <option value="1">赫根</option></select>
+
+   <p>魚缸總水量 <input id="Total_Water" value="20" type="text"></p>
+   <p>魚缸當前GH <input id="Old_GH" value="6" type="text"></p>
+   <div id="calchidden4"><p>預計提升或降低GH <input id="New_UpDown_GH" value="0" type="text"></p></div>
+   <div id="calchidden5"><p>預計提升GH <input id="New_UpDown_GH1" value="0" type="text"></p></div>
+   <p>預計換水幾公升 <input id="Change_Water" name="Change_Water" value="0" onchange="Water_Vaule();" type="text"></p>
+   <div id="calchidden1"><p>原水GH <input id="Raw_Water_GH" value="0" type="text"></p></div>
+   <p>需換水幾公升 <input id="Need_Change_Water" value="0" type="text1"></p>
+   <div id="calchidden2"><p>需加蘇鹽幾克 <input id="Need_Add_Salt" value="0" type="text1"></p></div>
+   <div id="calchidden3"><p>需加赫根幾ml <input id="Need_Add_Salt1" value="0" type="text1"></p></div>   
+   </div>
+  
+   <p><input id="count" value="計算" type="button"></input>
+   <input id="clear" value="清除" type="button"></input></p>
 </div>
 <script id="jsbin-javascript">
-document.getElementById('count').onclick = function(){
+var Raw_Water_selected = 0;
+var All_selected = 0;
+var Water_Vauled = 0;
+document.getElementById("calchidden1").style.display="none"; //隱藏原水GH
+document.getElementById("calchidden2").style.display=""; //顯示需加蘇鹽幾克
+document.getElementById("calchidden3").style.display="none"; //隱藏需加赫根幾ml
+document.getElementById("calchidden4").style.display=""; //顯示預計提升或降低GH
+document.getElementById("calchidden5").style.display="none"; //隱藏預計提升GH
+
+function Raw_Water_select(){
+   	Raw_Water_selected = document.getElementById("Raw_Water_Tool").value;
+    if (Raw_Water_selected == 0){
+      document.getElementById("calchidden4").style.display=""; //顯示預計提升或降低GH
+      document.getElementById("calchidden5").style.display="none"; //隱藏預計提升GH
+    }else{
+      document.getElementById("calchidden4").style.display="none"; //隱藏預計提升或降低GH
+      document.getElementById("calchidden5").style.display=""; //顯示預計提升GH
+    }
+}
+
+function All_select(){
+   	All_selected = document.getElementById("All_Tool").value;
+    if (All_selected == 0){
+      document.getElementById("calchidden2").style.display=""; //顯示需加蘇鹽幾克
+      document.getElementById("calchidden3").style.display="none"; //隱藏需加赫根幾ml
+    }else{
+      document.getElementById("calchidden2").style.display="none"; //隱藏需加蘇鹽幾克
+      document.getElementById("calchidden3").style.display=""; //顯示需加赫根幾ml     
+    }
+}
+
+function Water_Vaule(){
+   	Water_Vauled = document.getElementById('Change_Water').value;
+    Raw_Water_selected = document.getElementById("Raw_Water_Tool").value;
+    if ((Water_Vauled > 0) && (Raw_Water_selected == 1)){
+      document.getElementById("calchidden1").style.display=""; //顯示原水GH   
+    }else{
+      document.getElementById("calchidden1").style.display="none"; //隱藏原水GH      
+    }
+}  
+
+    document.getElementById('count').onclick = function(){
     var Total_Water_Num = Number(document.getElementById('Total_Water').value);
     var Old_GH_Num = Number(document.getElementById('Old_GH').value);
+    var Raw_Water_GH_Num = Number(document.getElementById('Raw_Water_GH').value);  
     var New_UpDown_GH_Num = Number(document.getElementById('New_UpDown_GH').value);
-    var Change_Water_Num = Number(document.getElementById('Change_Water').value); 
-    var Add_Salt_Num = Number(document.getElementById('Add_Salt').value);
-    document.getElementById("Total_Water").style.background = "#FFFFFF";
-    document.getElementById("Old_GH").style.background = "#FFFFFF";
-    document.getElementById("New_UpDown_GH").style.background = "#FFFFFF";  
-    document.getElementById("Change_Water").style.background = "#FFFFFF";  
-    document.getElementById("Add_Salt").style.background = "#FFFFFF";    
-    if (((New_UpDown_GH_Num > 0) && (Change_Water_Num => 0))||((New_UpDown_GH_Num == 0) && (Change_Water_Num => 0))){
-      var a = 3.5/15; //1公升 = 0.23333蘇鹽 = GH6/1L
-      var b = a/6; //1公升 = 0.03888蘇鹽 = GH1/1L
-    if ((Old_GH_Num == 0) && (Total_Water_Num == 0)){
-      var d = Change_Water_Num * b * New_UpDown_GH_Num //換水公升* GH1/1L蘇鹽 * 新GH 
-    }else{  
-      var c = Change_Water_Num * b * Old_GH_Num //換水公升* GH1/1L蘇鹽 * 當前魚缸GH
-      var d = c + Total_Water_Num * b * New_UpDown_GH_Num;
-    }   
-      document.getElementById('Add_Salt').value = Math.abs(d.toFixed(3));
-      document.getElementById("Add_Salt").style.background = "#00BB00";
+    var New_UpDown_GH1_Num = Number(document.getElementById('New_UpDown_GH1').value);      
+    var Change_Water_Num = Number(document.getElementById('Change_Water').value);
+    var Need_Change_Water_Num = Number(document.getElementById('Need_Change_Water').value);  
+    var Need_Add_Salt_Num = Number(document.getElementById('Need_Add_Salt').value);
+    var Need_Add_Salt_Num = Number(document.getElementById('Need_Add_Salt1').value);      
+    document.getElementById("Need_Change_Water").style.background = "#FFFFFF";  
+    document.getElementById("Need_Add_Salt").style.background = "#FFFFFF";
+    document.getElementById("Need_Add_Salt1").style.background = "#FFFFFF";      
+    if (All_selected == 0){
+    var a = 3.5/15; //1公升 = 0.23333蘇鹽 = GH6/1L
+    var b = a/6; //1公升 = 0.03888蘇鹽 = GH1/1L
+    }else{
+    var a = 1.5/2; //1公升 = 0.75赫根 = GH6/1L
+    var b = a/6; //1公升 = 0.125赫根 = GH1/1L      
+    }  
+    if ((((New_UpDown_GH_Num > 0) || (New_UpDown_GH1_Num > 0)) && (Change_Water_Num >= 0)) || (((New_UpDown_GH_Num == 0) || (New_UpDown_GH1_Num == 0)) && (Change_Water_Num >= 0))){
+      if ((Old_GH_Num == 0) && (Total_Water_Num == 0)){
+        if (Raw_Water_selected == 0){
+          var d = Change_Water_Num * b * New_UpDown_GH_Num; //換水公升* GH1/1L蘇鹽 * 新GH
+        }else{  
+          var d = Change_Water_Num * b * New_UpDown_GH1_Num; //換水公升* GH1/1L蘇鹽 * 新GH 
+        }  
+      }else{
+        if (Raw_Water_selected == 0){
+          var c = Change_Water_Num * b * Old_GH_Num; //換水公升* GH1/1L蘇鹽 * 當前魚缸GH
+          var d = c + Total_Water_Num * b * New_UpDown_GH_Num;
+        }else{  
+          if ((Raw_Water_GH_Num >= Old_GH_Num) || (New_UpDown_GH1_Num < 0)){
+            Change_Water_Num = 0;
+            var d = 0;
+          }else{
+            var c = Change_Water_Num * b * (Old_GH_Num - Raw_Water_GH_Num); //換水公升* GH1/1L蘇鹽 * 當前魚缸GH
+            var d = c + Total_Water_Num * b * New_UpDown_GH1_Num;
+          }  
+        } 
+      }
+      document.getElementById('Need_Change_Water').value  = Change_Water_Num;
+      document.getElementById("Need_Change_Water").style.background = "#00BB00";   
+      document.getElementById('Need_Add_Salt').value = Math.abs(d.toFixed(3));
+      document.getElementById("Need_Add_Salt").style.background = "#00BB00";
+      document.getElementById('Need_Add_Salt1').value = Math.abs(d.toFixed(3));
+      document.getElementById("Need_Add_Salt1").style.background = "#00BB00";      
     }
-    if (New_UpDown_GH_Num < 0){
-      var a = Total_Water_Num/Old_GH_Num; //總水量/當前GH = 1GH多少多水量
-      var b = a * -1 * New_UpDown_GH_Num;   
-      document.getElementById('Change_Water').value  = b.toFixed(3);
-      document.getElementById("Change_Water").style.background = "#00BB00";
-      document.getElementById('Add_Salt').value = 0;
+      
+    if ((Raw_Water_selected == 0) && (New_UpDown_GH_Num < 0)){
+      var c = Total_Water_Num / Old_GH_Num; //總水量/當前GH = 1GH多少多水量
+      var d = c * -1 * New_UpDown_GH_Num;
+      var e = d + Change_Water_Num; 
+      if (isNaN(e)){
+        e = 0;
+      }
+      var f = Change_Water_Num * b * (Old_GH_Num + New_UpDown_GH_Num);
+      document.getElementById('Need_Change_Water').value  = e.toFixed(3);
+      document.getElementById("Need_Change_Water").style.background = "#00BB00";
+      document.getElementById('Need_Add_Salt').value = f.toFixed(3);
+      document.getElementById("Need_Add_Salt").style.background = "#00BB00";
+      document.getElementById('Need_Add_Salt1').value = f.toFixed(3);
+      document.getElementById("Need_Add_Salt1").style.background = "#00BB00";      
     }
-    if ((New_UpDown_GH_Num == 0) && (Change_Water_Num == 0)){
-       document.getElementById('Change_Water').value  = 0;
-       document.getElementById("Change_Water").style.background = "#FFFFFF";
-       document.getElementById('Add_Salt').value = 0;
-       document.getElementById("Add_Salt").style.background = "#FFFFFF";      
+      
+    if (((New_UpDown_GH_Num == 0) || (New_UpDown_GH1_Num == 0)) && (Change_Water_Num == 0)){
+       document.getElementById('Need_Change_Water').value  = 0;
+       document.getElementById("Need_Change_Water").style.background = "#00BB00";
+       document.getElementById('Need_Add_Salt').value = 0;
+       document.getElementById("Need_Add_Salt").style.background = "#00BB00";
+       document.getElementById('Need_Add_Salt1').value = 0;
+       document.getElementById("Need_Add_Salt1").style.background = "#00BB00";         
     }     
 };
 
 document.getElementById('clear').onclick = function(){
        document.getElementById('Total_Water').value  = 20;
-       document.getElementById("Total_Water").style.background = "#FFFFFF";
        document.getElementById('Old_GH').value  = 6;
-       document.getElementById("Old_GH").style.background = "#FFFFFF";
        document.getElementById('New_UpDown_GH').value = 0;
-       document.getElementById("New_UpDown_GH").style.background = "#FFFFFF";  
        document.getElementById('Change_Water').value  = 0;
-       document.getElementById("Change_Water").style.background = "#FFFFFF";  
-       document.getElementById('Add_Salt').value = 0;
-       document.getElementById("Add_Salt").style.background = "#FFFFFF";   
+       document.getElementById('Need_Change_Water').value  = 0;
+       document.getElementById("Need_Change_Water").style.background = "#FFFFFF";   
+       document.getElementById('Need_Add_Salt').value = 0;
+       document.getElementById("Need_Add_Salt").style.background = "#FFFFFF";
+       document.getElementById('Need_Add_Salt1').value = 0;
+       document.getElementById("Need_Add_Salt1").style.background = "#FFFFFF";
+       document.getElementById("calchidden1").style.display="none"; //隱藏原水GH
 };
 </script>
