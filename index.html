@@ -172,7 +172,11 @@ function Water_Vaule(){
         }  
       }else{
         if (Raw_Water_selected == 0){
-          var c = Change_Water_Num * b * Old_GH_Num; //換水公升* GH1/1L蘇鹽 * 當前魚缸GH
+          if (Total_Water_Num != Change_Water_Num){
+            var c = Change_Water_Num * b * Old_GH_Num; //換水公升* GH1/1L蘇鹽 * 當前魚缸GH
+          }else{
+            var c = 0;
+          }  
           var d = c + Total_Water_Num * b * New_UpDown_GH_Num;
         }else{  
           if ((Raw_Water_GH_Num >= Old_GH_Num) || (New_UpDown_GH1_Num < 0)){
